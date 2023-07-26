@@ -6,3 +6,24 @@ https://www.figma.com/file/BPXeFVVqMA73Puam39NDbH/Travel-Jounal?type=design&node
 
 https://lucid.app/lucidchart/dc6c3dbd-c8ed-4aed-b28d-84093205d654/edit?invitationId=inv_8a2eba80-6788-44c7-87f8-8be356bbb351&page=0_0#
 
+postgres://yootkaqj:k-HDt_Vm3hbwW-VCPYmBf7QsU3VH84Rz@hansken.db.elephantsql.com/yootkaqj
+
+<App>
+  ├── <NavBar>
+  │     ├── <Logo>
+  │     ├── <NavLinks>
+  │     │     ├── <NavLink> (Home)
+  │     │     ├── <NavLink> (Login / Profile)
+  │     │     ├── <NavLink> (About)
+  │     │     └── <NavLink> (Contact)
+  │     └── <LoginButton> (Display 'Login' or 'Profile' based on authentication status)
+  ├── <LandingPage>
+  │     ├── <Blurb>
+  │     └── <AddJournalEntry>
+  ├── <JournalPage>
+  │     ├── <JournalList> (Browse previous journals)
+  │     └── <AddNewJournal>
+  └── <Footer>
+        ├── <About>
+        └── <Contact>
+
