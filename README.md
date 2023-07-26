@@ -8,22 +8,6 @@ https://lucid.app/lucidchart/dc6c3dbd-c8ed-4aed-b28d-84093205d654/edit?invitatio
 
 postgres://yootkaqj:k-HDt_Vm3hbwW-VCPYmBf7QsU3VH84Rz@hansken.db.elephantsql.com/yootkaqj
 
-<App>
-  ├── <NavBar>
-  │     ├── <Logo>
-  │     ├── <NavLinks>
-  │     │     ├── <NavLink> (Home)
-  │     │     ├── <NavLink> (Login / Profile)
-  │     │     ├── <NavLink> (About)
-  │     │     └── <NavLink> (Contact)
-  │     └── <LoginButton> (Display 'Login' or 'Profile' based on authentication status)
-  ├── <LandingPage>
-  │     ├── <Blurb>
-  │     └── <AddJournalEntry>
-  ├── <JournalPage>
-  │     ├── <JournalList> (Browse previous journals)
-  │     └── <AddNewJournal>
-  └── <Footer>
-        ├── <About>
-        └── <Contact>
 
+
+<img width="487" alt="Screenshot 2023-07-26 at 9 48 03 AM" src="https://github.com/ssstumbles/Hey_Tj/assets/121328711/578f4db4-b233-4111-ac9b-6470e1154494">
