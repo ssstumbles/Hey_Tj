@@ -4,22 +4,18 @@ import Main from './Components/Main'
 import PublicNav from './Components/Nav/PublicNav'
 import AuthNav from './Components/Nav/AuthNav'
 import About from './Components/About'
-
-import axios from 'axios'
-
-const api = axios.create({
-  baseURL: 'http://postgres://yootkaqj:k-HDt_Vm3hbwW-VCPYmBf7QsU3VH84Rz@hansken.db.elephantsql.com/yootkaqj'
-})
+import ApiContext from './context'
 
 function App() {
 
   return (
     <>
     <BrowserRouter>
+    <ApiContext.Provier>
       <PublicNav />
       <Main />
       {/* {userIsAuthenticated ? <AuthNav /> : <PublicNav />} */}
-
+      </ApiContext.Provier>
     </BrowserRouter>  
     </>
   )

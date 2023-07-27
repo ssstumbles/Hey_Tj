@@ -5,6 +5,6 @@ const api = axios.create({
   baseURL: 'http://postgres://yootkaqj:k-HDt_Vm3hbwW-VCPYmBf7QsU3VH84Rz@hansken.db.elephantsql.com/yootkaqj'
 })
 
-const ApiContext = createContext(api)
+const Global = createContext(api)
 
-export default ApiContext
+export default Global
