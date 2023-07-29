@@ -4,18 +4,18 @@ import Main from './Components/Main'
 import PublicNav from './Components/Nav/PublicNav'
 import AuthNav from './Components/Nav/AuthNav'
 import About from './Components/About'
-import ApiContext from './context'
+// import { Global } from './Context'
 
 function App() {
 
   return (
     <>
     <BrowserRouter>
-    <ApiContext.Provier>
+    {/* <GlobalProvider value={api}> */}
       <PublicNav />
       <Main />
       {/* {userIsAuthenticated ? <AuthNav /> : <PublicNav />} */}
-      </ApiContext.Provier>
+      {/* </GlobalProvider> */}
     </BrowserRouter>  
     </>
   )

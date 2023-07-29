@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import Home from './Home'
 import About from './About'
+import AddJournal from '../Components/Journal/AddJournal'
 
 const Main = () => {
 
@@ -8,8 +9,7 @@ const Main = () => {
         <Routes>
             <Route exact path='/' element={ <Home /> } />
             <Route exact path='/about' element={ <About /> } />
-            
-            {/* <Route exact path='/new-journal' element={ <AddJournal /> } /> */}
+            <Route path='/new-journal' element={ <AddJournal /> } />
         </Routes>
     )
 
