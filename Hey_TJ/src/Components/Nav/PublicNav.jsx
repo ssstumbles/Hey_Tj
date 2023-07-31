@@ -6,7 +6,7 @@ const PublicNav = () => {
             <Link to="/">Home</Link>
             <Link to="/about">How it Works</Link>
             <Link to="/login">Log In</Link>
-            <Link to="/new-journal">New Journal</Link>
+            <Link to="/manage-journals">Manage Journals</Link>
         </div>
     )
 }
