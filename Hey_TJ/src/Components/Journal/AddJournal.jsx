@@ -53,7 +53,7 @@ const AddJournal = () => {
         e.preventDefault()
         console.log(formState)
 
-        await axios.post('http://127.0.0.1:8000/admin/TJ/journal/', formState)
+        await axios.post('http://postgres://yootkaqj:k-HDt_Vm3hbwW-VCPYmBf7QsU3VH84Rz@hansken.db.elephantsql.com/yootkaqj/journal/', formState)
              .then((response) => {
         console.log(response.data)
       })
