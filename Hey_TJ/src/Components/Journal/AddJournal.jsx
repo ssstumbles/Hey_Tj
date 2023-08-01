@@ -1,9 +1,10 @@
 // import { useContext, useState, useEffect } from "react"
 // import Global from './Context'\
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useState, useContext } from 'react'
 import  Calendar from 'react-calendar'
-import Global from '../API/Global'
+import Global from '../API/Base'
+// will need to change this
 
 const AddJournal = () => {
     const api = useContext(Global)
@@ -29,7 +30,7 @@ const AddJournal = () => {
         return `${year}-${month}-${day}`
       }
 
-    const history = useHistory()
+    // const history = useHistory()
 
     const handleChange = (e) => {
         setFormState({ ...formState, [e.target.id]: e.target.value })
@@ -56,19 +57,7 @@ const AddJournal = () => {
         e.preventDefault()
         console.log(formState)
 
-   
 
-        try {
-            const response = await api.post('/api/journals/', formState);
-            const newJournalId = response.data.journal_id
-            console.log('New journal ID:', newJournalId)
-
-
-            history.push(`/Journal/${newJournalId}`)
-        } catch (error) {
-            console.error('Error creating journal:', error)
-        }
-    }
 
 
         return (
@@ -125,5 +114,5 @@ const AddJournal = () => {
 
 
         )
-    }
+    }}
 export default AddJournal
