@@ -13,13 +13,14 @@ const AddJournal = () => {
         "journal_name": '',
         // "journal_photos": <input type="url" name="" id="" />, don't think this is necessary here, bit will be on update page
         "journal_date_start": new Date(),
-        "journal_ongioing": false,
+        "journal_ongoing": false,
         "journal_date_end": '',
         "journal_locations": ''
     }
     
     const [formState, setFormState] = useState(initialState)
 
+    //remember this vast fuckery for later
     const formatDate = (dateStr) => {
         const date = new Date(dateStr)
         const year = date.getFullYear()
@@ -55,7 +56,7 @@ const AddJournal = () => {
             console.log('New journal ID:', newJournalId);
 
             // Redirect to the newly created journal page using the new journal ID
-            history.push(`/journal/${newJournalId}`)
+            history.push(`/Journal/${newJournalId}`)
         } catch (error) {
             console.error('Error creating journal:', error)
         }
