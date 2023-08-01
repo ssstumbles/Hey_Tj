@@ -1,12 +1,14 @@
-// import { useContext, useState, useEffect } from "react"
-// import Global from './Context'\
-import { Link, useHistory } from 'react-router-dom'
-import { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { useState, useContext, useEffect } from 'react'
 import  Calendar from 'react-calendar'
-import Global from '../API/Global'
+import axios from 'axios'
+import AxiosContext from '../API/Base'
+// will need to change this
 
 const AddJournal = () => {
-    const api = useContext(Global)
+    
+    const [journals, setJournals] = useState ([])
+
 
     const initialState = {
         "journal_id": '',
@@ -20,16 +22,7 @@ const AddJournal = () => {
     
     const [formState, setFormState] = useState(initialState)
 
-    //remember this vast fuckery for later
-    const formatDate = (dateStr) => {
-        const date = new Date(dateStr)
-        const year = date.getFullYear()
-        const month = String(date.getMonth() + 1).padStart(2, "0")
-        const day = String(date.getDate()).padStart(2, "0")
-        return `${year}-${month}-${day}`
-      }
-
-    const history = useHistory()
+    // const history = useHistory()
 
     const handleChange = (e) => {
         setFormState({ ...formState, [e.target.id]: e.target.value })
@@ -46,30 +39,42 @@ const AddJournal = () => {
     const handleOngoingChange = (e) => {
         setFormState({ ...formState, journal_ongoing: e.target.checked });
     }
+        //remember this vast fuckery for later
+        const formatDate = (dateStr) => {
+            const date = new Date(dateStr)
+            const year = date.getFullYear()
+            const month = String(date.getMonth() + 1).padStart(2, "0")
+            const day = String(date.getDate()).padStart(2, "0")
+            return `${year}-${month}-${day}`
+          }
+    
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        console.log(formState)
+
+        await axios.post('http://127.0.0.1:8000/admin/TJ/journal/', formState)
+             .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.error('Error creating journal:', error);
+      })
+    }
 
     const handleCalendarChange = (date) => {
         const formattedDate = formatDate(date)
         setFormState({ ...formState, journal_date_start: (formattedDate) })
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        console.log(formState)
-
-   
-
-        try {
-            const response = await api.post('/api/journals/', formState);
-            const newJournalId = response.data.journal_id
-            console.log('New journal ID:', newJournalId)
-
-
-            history.push(`/Journal/${newJournalId}`)
-        } catch (error) {
-            console.error('Error creating journal:', error)
-        }
-    }
-
+    // axios
+    //   .post('http://127.0.0.1:8000/admin/TJ/journal/', formState)
+    //   .then((response) => {
+    //     console.log(response.data)
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error creating journal:', error);
+    //   })
 
         return (
             <div className='add-journal'>
@@ -114,8 +119,6 @@ const AddJournal = () => {
                         <Calendar
                             onChange={handleCalendarChange}
                             showNavigation = {false}
-                            
-                            tileDisabled = {null}
                         />
                     </div>
                     <button type='submit'>Submit</button>
@@ -127,3 +130,4 @@ const AddJournal = () => {
         )
     }
 export default AddJournal
+
