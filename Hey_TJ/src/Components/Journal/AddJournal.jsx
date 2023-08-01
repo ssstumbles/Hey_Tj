@@ -10,13 +10,13 @@ const AddJournal = () => {
 
 
     const initialState = {
-        "journal_id": '',
+        // "journal_id": '',
         "journal_name": '',
         // "journal_photos": <input type="url" name="" id="" />, don't think this is necessary here, bit will be on update page
         "journal_date_start": new Date(),
         "journal_ongoing": false,
         "journal_date_end": '',
-        "journal_locations": '',
+        // "journal_locations": '',
     }
     
     const [formState, setFormState] = useState(initialState)
@@ -41,9 +41,10 @@ const AddJournal = () => {
         e.preventDefault()
         console.log(formState)
 
-        await axios.get('http://postgres://yootkaqj:k-HDt_Vm3hbwW-VCPYmBf7QsU3VH84Rz@hansken.db.elephantsql.com/yootkaqj/journal/', formState)
+        await axios.post('http://127.0.0.1:8000/journals/', formState)
              .then((response) => {
-        console.log(response.data)
+                console.log(response)
+       
       })
       .catch((error) => {
         console.error('Error creating journal:', error);

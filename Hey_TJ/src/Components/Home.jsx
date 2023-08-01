@@ -12,13 +12,14 @@ const Home = () => {
                 <p>
                     I'm here to assist you, so you can easily document all your trips and adventures!
                 </p>
+                <div className='intro-buttons'>
                 <Link to='/about'>
-                    <button>See How it Works</button>
+                    <button className='highlight-btn'>See How it Works</button>
                 </Link>
                 <Link to='new-journal'>
-                    <button>Get Started</button>
+                    <button className='highlight-btn'>Get Started</button>
                 </Link>
-               
+                </div>
             </div>
         </div>    
     )

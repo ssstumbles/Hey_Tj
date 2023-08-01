@@ -12,9 +12,9 @@ function App() {
   return (
     <>
     <BrowserRouter>
+    <PublicNav />
     <div className='page'>
     {/* <GlobalProvider value={api}> */}
-      <PublicNav />
       <Main />
       {/* {userIsAuthenticated ? <AuthNav /> : <PublicNav />} */}
       {/* </GlobalProvider> */}

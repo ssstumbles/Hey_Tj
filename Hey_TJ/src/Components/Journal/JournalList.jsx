@@ -14,6 +14,7 @@ useEffect(() => {
     }
         getAllJournals
     }, [])
+    
     return (
         <div className='manage'>
             {allJournals}
