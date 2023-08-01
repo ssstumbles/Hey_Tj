@@ -12,11 +12,14 @@ function App() {
   return (
     <>
     <BrowserRouter>
+    <div className='page'>
     {/* <GlobalProvider value={api}> */}
       <PublicNav />
       <Main />
       {/* {userIsAuthenticated ? <AuthNav /> : <PublicNav />} */}
       {/* </GlobalProvider> */}
+      
+      </div>
       <Footer />
     </BrowserRouter>  
     </>

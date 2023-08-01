@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState, useContext, useEffect } from 'react'
 import  Calendar from 'react-calendar'
 import axios from 'axios'
-import AxiosContext from '../API/Base'
-// will need to change this
+import api from '../API/Base'
 
 const AddJournal = () => {
     
@@ -22,19 +21,9 @@ const AddJournal = () => {
     
     const [formState, setFormState] = useState(initialState)
 
-    // const history = useHistory()
-
     const handleChange = (e) => {
         setFormState({ ...formState, [e.target.id]: e.target.value })
     }
-
-    // const handleOngoingChange = (e) => {
-    //     if (e.target.id === 'journal_ongoing') {
-    //       setFormState({ ...formState, journal_ongoing: e.target.checked })
-    //     } else {
-    //       setFormState({ ...formState, [e.target.id]: e.target.value })
-    //     }
-    //   } this def works but the way below is cleaner. if that doesnt work try this again as its been tested 
 
     const handleOngoingChange = (e) => {
         setFormState({ ...formState, journal_ongoing: e.target.checked });
@@ -48,12 +37,11 @@ const AddJournal = () => {
             return `${year}-${month}-${day}`
           }
     
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(formState)
 
-        await axios.post('http://postgres://yootkaqj:k-HDt_Vm3hbwW-VCPYmBf7QsU3VH84Rz@hansken.db.elephantsql.com/yootkaqj/journal/', formState)
+        await axios.get('http://postgres://yootkaqj:k-HDt_Vm3hbwW-VCPYmBf7QsU3VH84Rz@hansken.db.elephantsql.com/yootkaqj/journal/', formState)
              .then((response) => {
         console.log(response.data)
       })
