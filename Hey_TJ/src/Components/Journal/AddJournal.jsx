@@ -3,7 +3,7 @@
 import { Link, useHistory } from 'react-router-dom'
 import { useState, useContext } from 'react'
 import  Calendar from 'react-calendar'
-import Global from '../../Context'
+import Global from '../API/Global'
 
 const AddJournal = () => {
     const api = useContext(Global)

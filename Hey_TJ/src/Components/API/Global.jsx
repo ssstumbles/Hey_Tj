@@ -7,4 +7,6 @@ const api = axios.create({
 
 const Global = createContext(api)
 
+export const JOURNALS_ENDPOINT = 'api/journals'
+
 export default Global
