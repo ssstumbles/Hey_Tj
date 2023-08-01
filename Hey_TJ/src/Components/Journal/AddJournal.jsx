@@ -26,7 +26,7 @@ const AddJournal = () => {
     }
 
     const handleOngoingChange = (e) => {
-        setFormState({ ...formState, journal_ongoing: e.target.checked });
+        setFormState({ ...formState, journal_ongoing: e.target.checked })
     }
         //remember this vast fuckery for later
         const formatDate = (dateStr) => {
