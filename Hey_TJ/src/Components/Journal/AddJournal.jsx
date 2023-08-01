@@ -1,6 +1,6 @@
 // import { useContext, useState, useEffect } from "react"
 // import Global from './Context'\
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useState, useContext } from 'react'
 import  Calendar from 'react-calendar'
 import Global from '../../Context'
@@ -15,7 +15,7 @@ const AddJournal = () => {
         "journal_date_start": new Date(),
         "journal_ongoing": false,
         "journal_date_end": '',
-        "journal_locations": ''
+        "journal_locations": '',
     }
     
     const [formState, setFormState] = useState(initialState)
@@ -29,17 +29,23 @@ const AddJournal = () => {
         return `${year}-${month}-${day}`
       }
 
+    const history = useHistory()
+
     const handleChange = (e) => {
         setFormState({ ...formState, [e.target.id]: e.target.value })
     }
 
+    // const handleOngoingChange = (e) => {
+    //     if (e.target.id === 'journal_ongoing') {
+    //       setFormState({ ...formState, journal_ongoing: e.target.checked })
+    //     } else {
+    //       setFormState({ ...formState, [e.target.id]: e.target.value })
+    //     }
+    //   } this def works but the way below is cleaner. if that doesnt work try this again as its been tested 
+
     const handleOngoingChange = (e) => {
-        if (e.target.id === 'journal_ongoing') {
-          setFormState({ ...formState, journal_ongoing: e.target.checked })
-        } else {
-          setFormState({ ...formState, [e.target.id]: e.target.value })
-        }
-      }
+        setFormState({ ...formState, journal_ongoing: e.target.checked });
+    }
 
     const handleCalendarChange = (date) => {
         const formattedDate = formatDate(date)
@@ -50,12 +56,14 @@ const AddJournal = () => {
         e.preventDefault()
         console.log(formState)
 
+   
+
         try {
             const response = await api.post('/api/journals/', formState);
-            const newJournalId = response.data.journal_id; // Assuming your backend returns the newly created journal ID in the response
-            console.log('New journal ID:', newJournalId);
+            const newJournalId = response.data.journal_id
+            console.log('New journal ID:', newJournalId)
 
-            // Redirect to the newly created journal page using the new journal ID
+
             history.push(`/Journal/${newJournalId}`)
         } catch (error) {
             console.error('Error creating journal:', error)
@@ -103,7 +111,12 @@ const AddJournal = () => {
                         </div>
                     )}
                     <div className='calendar'>
-                        <Calendar onChange={handleCalendarChange} />
+                        <Calendar
+                            onChange={handleCalendarChange}
+                            showNavigation = {false}
+                            
+                            tileDisabled = {null}
+                        />
                     </div>
                     <button type='submit'>Submit</button>
                 </form>
