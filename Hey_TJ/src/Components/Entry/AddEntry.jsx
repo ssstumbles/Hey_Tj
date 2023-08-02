@@ -22,7 +22,7 @@ const AddEntry = () => {
         e.preventDefault()
         console.log(formState)
 
-        await axios.post('http://127.0.0.1:8000/journal-item/', formState)
+        await axios.post('http://127.0.0.1:8000/entries/', formState)
             .then((response) => {
                 console.log(response)
 

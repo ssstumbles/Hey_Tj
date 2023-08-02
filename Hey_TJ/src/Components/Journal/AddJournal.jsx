@@ -6,13 +6,12 @@ import api from '../API/Base'
 
 const AddJournal = () => {
     
-    const [journals, setJournals] = useState ([])
+    const [journals, setJournals] = useState([])
 
 
     const initialState = {
-        // "journal_id": '',
+        "journal_id": '',
         "journal_name": '',
-        // "journal_photos": <input type="url" name="" id="" />, don't think this is necessary here, bit will be on update page
         "journal_date_start": new Date(),
         "journal_ongoing": false,
         "journal_date_end": '',
@@ -36,7 +35,11 @@ const AddJournal = () => {
             const day = String(date.getDate()).padStart(2, "0")
             return `${year}-${month}-${day}`
           }
-    
+
+        //   const lastJournalId = journals.length > 0 ? journals[journals.length - 1].journal_id : 0
+        //   setFormState({ ...formState, journal_id: lastJournalId + 1 })
+
+        
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(formState)
@@ -55,15 +58,6 @@ const AddJournal = () => {
         const formattedDate = formatDate(date)
         setFormState({ ...formState, journal_date_start: (formattedDate) })
     }
-
-    // axios
-    //   .post('http://127.0.0.1:8000/admin/TJ/journal/', formState)
-    //   .then((response) => {
-    //     console.log(response.data)
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error creating journal:', error);
-    //   })
 
         return (
             <div className='add-journal'>

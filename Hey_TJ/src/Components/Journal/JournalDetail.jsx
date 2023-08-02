@@ -6,11 +6,11 @@ import axios from "axios"
 const JournalDetail = () => {
 
     const { journal_id } = useParams()
-    const [journalDetails, setJournalDetails] = useState=(null)
+    const [journalDetails, setJournalDetails] = useState(null)
 
     useEffect(() => {
         const getJournalDetails = async () => {
-            const response = await axios.get('http://127.0.0.1:8000/journal-details/')
+            const response = await axios.get('http://127.0.0.1:8000/entries/')
             setJournalDetails(response.data)
         }
         getJournalDetails()
@@ -19,13 +19,13 @@ const JournalDetail = () => {
   return (
     <div>
       <Link to="/manage-journals">Back</Link>
-      {journalDetails ? (
+      {entryDetail ? (
         <div>
-          <h2>{journalDetails.journal_name}</h2>
+          <h2>{journal.journal_name}</h2>
           {/* Display other details of the journal here */}
         </div>
       ) : (
-        <div>Loading...</div>
+        <div>No journals...</div>
       )}
     </div>
   );
