@@ -4,7 +4,6 @@ import axios from "axios"
 
 const JournalList = () => {
 
-
 const [allJournals, setAllJournals] = useState([])
 
 useEffect(() => {

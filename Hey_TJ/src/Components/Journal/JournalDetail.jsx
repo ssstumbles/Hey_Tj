@@ -22,13 +22,12 @@ const JournalDetail = () => {
       {entryDetail ? (
         <div>
           <h2>{journal.journal_name}</h2>
-          {/* Display other details of the journal here */}
         </div>
       ) : (
         <div>No journals...</div>
       )}
     </div>
-  );
-};
+  )
+}
 
 export default JournalDetail
