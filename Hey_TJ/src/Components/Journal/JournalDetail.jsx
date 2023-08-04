@@ -6,6 +6,7 @@ import axios from "axios"
 const JournalDetail = () => {
 
     const { journal_id } = useParams()
+    console.log(journal_id)
     const [journalDetails, setJournalDetails] = useState(null)
 
     useEffect(() => {
