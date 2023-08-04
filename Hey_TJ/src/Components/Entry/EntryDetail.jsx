@@ -11,7 +11,7 @@ const EntryDetail = () => {
 
     useEffect(() => {
         const getEntryDetails = async () => {
-            const response = await axios.get('http://127.0.0.1:8000/entries/')
+            const response = await axios.get('http://127.0.0.1:8000/entries/${journal_id}/')
             setEntryDetails(response.data)
         } catch (error) {
             console.error('Could not find details', error)
@@ -60,4 +60,4 @@ const EntryDetail = () => {
           )
         
         
-        export default EntryDetail;
+        export default EntryDetail

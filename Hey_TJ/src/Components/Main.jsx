@@ -17,7 +17,7 @@ const Main = () => {
             <Route exact path='/about' element={ <About /> } />
             <Route path='/new-journal' element={ <AddJournal /> } />
             <Route path='/manage-journals' element={ <JournalList /> } />
-            <Route path='/journal-detail' element={ <JournalDetail /> } />
+            <Route path='/journals/:journal_id' element={ <JournalDetail /> } />
             {/* <Route path='/journal' element={ <Journal /> } />  */}
             {/* <Route path='/contact' element={ <Contact /> } /> */}
             <Route path='new-entry' element={ <AddEntry /> } />

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { useState, useContext, useEffect } from 'react'
 import  Calendar from 'react-calendar'
 import axios from 'axios'
-import api from '../API/Base'
 
 const AddJournal = () => {
     
@@ -69,7 +68,6 @@ const AddJournal = () => {
                         value={formState.journal_name}
                         onChange={handleChange}
                     />
-                    {/* <div> photo field added here if needed </div> */}
 
                     <div>Start date: </div>
                     <input

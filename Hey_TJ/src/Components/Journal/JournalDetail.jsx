@@ -10,7 +10,8 @@ const JournalDetail = () => {
 
     useEffect(() => {
         const getJournalDetails = async () => {
-            const response = await axios.get('http://127.0.0.1:8000/entries/')
+            const response = await axios.get(`http://127.0.0.1:8000/journals/${journal_id}/`)
+            console.log(response.data)
             setJournalDetails(response.data)
         }
         getJournalDetails()
@@ -19,9 +20,9 @@ const JournalDetail = () => {
   return (
     <div>
       <Link to="/manage-journals">Back</Link>
-      {entryDetail ? (
+      {journalDetails ? (
         <div>
-          <h2>{journal.journal_name}</h2>
+          <h2>{journalDetails.journal_name}</h2>
         </div>
       ) : (
         <div>No journals...</div>
@@ -31,3 +32,4 @@ const JournalDetail = () => {
 }
 
 export default JournalDetail
+

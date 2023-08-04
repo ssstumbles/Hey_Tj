@@ -20,15 +20,15 @@ useEffect(() => {
         <div className='manage'>
         
             {allJournals.map((journal, key) => (
-                <li key={journal.journal_id}>
-                    <Link to={`/entries/${journal.id}`}>{journal.journal_name}</Link>
+                <li key={journal.id}>
+                    {console.log('journal.id:', journal.id)}
+                    <Link to={`/journals/${journal.journal_id}`}>{journal.journal_name}</Link>
                 </li>
             ))}
         
-
             <Link to="/new-journal">Make a New Journal</Link>
             {/* <Link to="/journal-detail">Click a journal to get in depth deets</Link> */}
-            {/* This  will need an axios call */}
+
         
         </div>
     )
