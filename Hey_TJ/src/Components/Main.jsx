@@ -6,7 +6,8 @@ import JournalList from '../Components/Journal/JournalList'
 // import Journal from '../Componets/Journal/Journal'
 import JournalDetail from '../Components/Journal/JournalDetail'
 // import Contact from './Componets/Contact'
-import AddEntry from '../Components/Entry/AddEntry'
+import UpdateEntry from './Entry/UpdateEntry'
+import EntryDetail from './Entry/EntryDetail'
 
 
 const Main = () => {
@@ -18,9 +19,8 @@ const Main = () => {
             <Route path='/new-journal' element={ <AddJournal /> } />
             <Route path='/manage-journals' element={ <JournalList /> } />
             <Route path='/journals/:journal_id' element={ <JournalDetail /> } />
-            {/* <Route path='/journal' element={ <Journal /> } />  */}
-            {/* <Route path='/contact' element={ <Contact /> } /> */}
-            <Route path='new-entry' element={ <AddEntry /> } />
+            {/* <Route path='/entries/' element= { <EntryList /> } /> */}
+            <Route path='/entries/:entry_id' element={ <EntryDetail /> } />
 
         </Routes>
     )

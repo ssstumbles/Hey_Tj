@@ -3,7 +3,7 @@ import { useState, useContext, useEffect } from 'react'
 import  Calendar from 'react-calendar'
 import axios from 'axios'
 
-const AddEntry = () => {
+const UpdateEntry = () => {
 
     const [entries, setEntry] = useState([])
 
@@ -22,7 +22,7 @@ const AddEntry = () => {
         e.preventDefault()
         console.log(formState)
 
-        await axios.post('http://127.0.0.1:8000/entries/', formState)
+        await axios.put(`http://127.0.0.1:8000/entries/`, formState)
             .then((response) => {
                 console.log(response)
 
@@ -72,4 +72,4 @@ const AddEntry = () => {
     )
 }
 
-export default AddEntry
+export default UpdateEntry

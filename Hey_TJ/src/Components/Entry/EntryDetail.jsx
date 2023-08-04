@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from "react"
 import axios from "axios"
+// import updateEntry from './UpdateEntry'
 
 const EntryDetail = () => {
 
@@ -11,53 +12,63 @@ const EntryDetail = () => {
 
     useEffect(() => {
         const getEntryDetails = async () => {
-            const response = await axios.get('http://127.0.0.1:8000/entries/${journal_id}/')
+            const response = await axios.get(`http://127.0.0.1:8000/entries/${entry_id}`)
             setEntryDetails(response.data)
-        } catch (error) {
-            console.error('Could not find details', error)
-        }
+            setWriteup(response.data.writeup)
+        } 
         getEntryDetails()
     }, [entry_id])
   
 
-    constHandleDelete = () => {
-        const updateEntryDetails = async () => {
-            const response = await axios.delete('http://127.0.0.1:8000/entries/')
-            updateEntryDetails(response.data)
+    const handleDelete = () => {
+        const deleteEntryDetails = async () => {
+            const response = await axios.delete(`http://127.0.0.1:8000/entries/${entry_id}`)
+            deleteEntryDetails(response.data)
         }
         deleteEntryDetails()
-    }, [entry_id]  
+    }
+
+    const [writeup, setWriteup] = useState('')
+
+    const handleUpdate = () => {
+        const updateEntryDetails = async () => {
+            const response = await axios.put(`http://127.0.0.1:8000/entries/${entry_id}`,
+            {
+              name: entryDetails.name,
+              writeup: writeup,
+            }
+            )
 
     
-    constHandleUpdate = () => {
-        const updateEntryDetails = async () => {
-            const response = await axios.post('http://127.0.0.1:8000/entries/')
+            
             updateEntryDetails(response.data)
         }
         updateEntryDetails()
-    }, [entry_id]  
-
-        }
+    }
 
         return (
             <div>
-              <Link to="/manage-journals">Back</Link>
+              
               {entryDetails ? (
                 <div>
                   <h2>{entryDetails.name}</h2>
-                  {/* Display other details of the entry here */}
-                  {/* You can use a form here for updating the entry */}
-                  <form onSubmit={handleUpdate}>
-                    {/* Input fields for updating entry details */}
-                    <button type="submit">Update</button>
-                  </form>
+                  <input 
+                    type='text'
+                    value={writeup} onChange={(e) => setWriteup(e.target.value)}>
+                  
+
+                  </input>
+                         
+                  <button onClick={handleUpdate}>Update</button>
                   <button onClick={handleDelete}>Delete</button>
                 </div>
               ) : (
                 <div>nothing here...</div>
+                
               )}
+              <Link to="/manage-journals">Back</Link>
             </div>
           )
-        
+              }
         
         export default EntryDetail
