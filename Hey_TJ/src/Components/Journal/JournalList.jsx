@@ -22,12 +22,12 @@ useEffect(() => {
             {allJournals.map((journal, key) => (
                 <li key={journal.id}>
                     {console.log('journal.id:', journal.id)}
-                    <Link to={`/journals/${journal.journal_id}`}>{journal.journal_name}</Link>
+                    <Link to={`/journals/${journal.id}`}>{journal.journal_name}</Link>
                 </li>
             ))}
         
             <Link to="/new-journal">Make a New Journal</Link>
-            {/* <Link to="/journal-detail">Click a journal to get in depth deets</Link> */}
+            <Link to="/journal-detail">Click a journal to get in depth deets</Link>
 
         
         </div>
